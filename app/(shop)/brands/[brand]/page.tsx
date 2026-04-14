@@ -7,7 +7,7 @@ import { H1, H2, Body, BodySm, Label } from '@/components/ui/Typography'
 import { Button, ArrowCTA } from '@/components/ui/Button'
 
 interface Props {
-  params: Promise<{ brand: string }>
+  params: { brand: string }
 }
 
 export async function generateStaticParams() {
@@ -15,15 +15,13 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { brand } = await params
-  const brandConfig = getBrandBySlug(brand)
+  const brandConfig = getBrandBySlug(params.brand)
   if (!brandConfig) return { title: 'Brand Not Found' }
   return { title: brandConfig.seoTitle, description: brandConfig.seoDescription }
 }
 
 export default async function BrandPage({ params }: Props) {
-  const { brand } = await params
-  const brandConfig = getBrandBySlug(brand)
+  const brandConfig = getBrandBySlug(params.brand)
   if (!brandConfig) notFound()
 
   const cssVars = getBrandCSSVars(brandConfig)
