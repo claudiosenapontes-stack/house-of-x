@@ -5,8 +5,14 @@ import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
-import { CasaMiaLogo } from '@/components/brands/CasaMiaLogo'
-import { AkropolliLogo } from '@/components/brands/AkropolliLogo'
+import { 
+  CasaMiaLogo, 
+  AkropolliLogo, 
+  OneClickLogo, 
+  TerrazoLogo, 
+  HausOfLightLogo,
+  FormafinaLogo 
+} from '@/components/brands'
 
 const HERO_SLIDES = [
   {
@@ -17,7 +23,6 @@ const HERO_SLIDES = [
     cta: { label: 'Explore Casa Mia', href: '/brands/casa-mia' },
     bg: '#1a1410',
     accent: '#8b7355',
-    showLogo: true,
   },
   {
     id: 'akropolli',
@@ -27,7 +32,15 @@ const HERO_SLIDES = [
     cta: { label: 'Explore Akropolli', href: '/brands/akropolli' },
     bg: '#1A0E0A',
     accent: '#63342A',
-    showLogo: true,
+  },
+  {
+    id: 'one-click',
+    brand: 'One Click',
+    headline: 'Transparency\non command.',
+    subline: 'Smart film, PDLC glass & automation',
+    cta: { label: 'Explore One Click', href: '/brands/one-click' },
+    bg: '#050F18',
+    accent: '#00A0D7',
   },
   {
     id: 'haus-of-light',
@@ -37,17 +50,6 @@ const HERO_SLIDES = [
     cta: { label: 'Explore Haus of Light', href: '/brands/haus-of-light' },
     bg: '#080810',
     accent: '#d4a853',
-    showLogo: false,
-  },
-  {
-    id: 'stark-windows',
-    brand: 'Stark Windows',
-    headline: 'Performance\nglass. Zero\ncompromise.',
-    subline: 'Triple-pane, hurricane-resistant, Miami-Dade approved',
-    cta: { label: 'Explore Stark Windows', href: '/brands/stark-windows' },
-    bg: '#080f18',
-    accent: '#4080b0',
-    showLogo: false,
   },
   {
     id: 'terrazo',
@@ -57,7 +59,24 @@ const HERO_SLIDES = [
     cta: { label: 'Explore Terrazo', href: '/brands/terrazo' },
     bg: '#1a1714',
     accent: '#9F9180',
-    showLogo: false,
+  },
+  {
+    id: 'formafina',
+    brand: 'FormaFina',
+    headline: 'The invisible\nfinish.',
+    subline: 'Flush baseboards, switches & HVAC finishes',
+    cta: { label: 'Explore FormaFina', href: '/brands/formafina' },
+    bg: '#101010',
+    accent: '#C6C6C5',
+  },
+  {
+    id: 'stark-windows',
+    brand: 'Stark Windows',
+    headline: 'Performance\nglass. Zero\ncompromise.',
+    subline: 'Triple-pane, hurricane-resistant, Miami-Dade approved',
+    cta: { label: 'Explore Stark Windows', href: '/brands/stark-windows' },
+    bg: '#080f18',
+    accent: '#4080b0',
   },
 ]
 
@@ -69,6 +88,25 @@ const containerVariants = {
 const lineVariants = {
   hidden: { opacity: 0, y: 32 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
+}
+
+function BrandLogo({ brandId, variant = 'light' }: { brandId: string; variant?: 'light' | 'dark' }) {
+  switch (brandId) {
+    case 'casa-mia':
+      return <CasaMiaLogo variant={variant} className="h-8 w-auto opacity-80" />
+    case 'akropolli':
+      return <AkropolliLogo variant={variant} className="h-8 w-auto opacity-80" />
+    case 'one-click':
+      return <OneClickLogo variant={variant} className="h-8 w-auto opacity-80" />
+    case 'terrazo':
+      return <TerrazoLogo variant={variant} className="h-8 w-auto opacity-80" />
+    case 'haus-of-light':
+      return <HausOfLightLogo variant={variant} className="h-8 w-auto opacity-80" />
+    case 'formafina':
+      return <FormafinaLogo variant={variant} className="h-8 w-auto opacity-80" />
+    default:
+      return null
+  }
 }
 
 export function HeroSection() {
@@ -85,6 +123,7 @@ export function HeroSection() {
   }, [isPaused, active])
 
   const slide = HERO_SLIDES[active]
+  const showLogo = ['casa-mia', 'akropolli', 'one-click', 'terrazo', 'haus-of-light', 'formafina'].includes(slide.id)
 
   return (
     <section
@@ -110,10 +149,8 @@ export function HeroSection() {
         className="absolute top-24 lg:top-32 left-8 lg:left-16"
       >
         {/* Show brand logo instead of text label */}
-        {slide.id === 'casa-mia' && slide.showLogo ? (
-          <CasaMiaLogo variant="light" className="h-8 w-auto opacity-80" />
-        ) : slide.id === 'akropolli' && slide.showLogo ? (
-          <AkropolliLogo variant="light" className="h-8 w-auto opacity-80" />
+        {showLogo ? (
+          <BrandLogo brandId={slide.id} variant="light" />
         ) : (
           <span className="font-sans text-label text-white/40 uppercase tracking-[0.2em]">{slide.brand}</span>
         )}

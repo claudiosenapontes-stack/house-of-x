@@ -5,8 +5,14 @@ import { getBrandBySlug, BRAND_LIST, getBrandCSSVars } from '@/lib/brands/config
 import { SectionReveal } from '@/components/ui/SectionReveal'
 import { H1, H2, Body, BodySm, Label } from '@/components/ui/Typography'
 import { Button } from '@/components/ui/Button'
-import { CasaMiaLogo } from '@/components/brands/CasaMiaLogo'
-import { AkropolliLogo } from '@/components/brands/AkropolliLogo'
+import { 
+  CasaMiaLogo, 
+  AkropolliLogo, 
+  OneClickLogo,
+  TerrazoLogo,
+  HausOfLightLogo,
+  FormafinaLogo
+} from '@/components/brands'
 
 interface Props {
   params: Promise<{ brand: string }>
@@ -23,14 +29,34 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return { title: brandConfig.seoTitle, description: brandConfig.seoDescription }
 }
 
+function BrandLogo({ brandSlug, variant = 'light' }: { brandSlug: string; variant?: 'light' | 'dark' }) {
+  switch (brandSlug) {
+    case 'casa-mia':
+      return <CasaMiaLogo variant={variant} className="h-12 w-auto" />
+    case 'akropolli':
+      return <AkropolliLogo variant={variant} className="h-12 w-auto" />
+    case 'one-click':
+      return <OneClickLogo variant={variant} className="h-12 w-auto" />
+    case 'terrazo':
+      return <TerrazoLogo variant={variant} className="h-12 w-auto" />
+    case 'haus-of-light':
+      return <HausOfLightLogo variant={variant} className="h-12 w-auto" />
+    case 'formafina':
+      return <FormafinaLogo variant={variant} className="h-12 w-auto" />
+    default:
+      return null
+  }
+}
+
+const brandsWithLogos = ['casa-mia', 'akropolli', 'one-click', 'terrazo', 'haus-of-light', 'formafina']
+
 export default async function BrandPage({ params }: Props) {
   const { brand } = await params
   const brandConfig = getBrandBySlug(brand)
   if (!brandConfig) notFound()
 
   const cssVars = getBrandCSSVars(brandConfig)
-  const isCasaMia = brandConfig.slug === 'casa-mia'
-  const isAkropolli = brandConfig.slug === 'akropolli'
+  const hasLogo = brandsWithLogos.includes(brandConfig.slug)
 
   return (
     <main style={cssVars as React.CSSProperties} className={brandConfig.theme.isDarkBrand ? 'bg-[var(--brand-surface-dark)]' : 'bg-white'}>
@@ -48,14 +74,9 @@ export default async function BrandPage({ params }: Props) {
         <div className="relative max-w-site mx-auto px-6 lg:px-10 w-full">
           <SectionReveal>
             {/* Logo for specific brands */}
-            {isCasaMia && (
+            {hasLogo && (
               <div className="mb-8">
-                <CasaMiaLogo variant="light" className="h-12 w-auto" />
-              </div>
-            )}
-            {isAkropolli && (
-              <div className="mb-8">
-                <AkropolliLogo variant="light" className="h-12 w-auto" />
+                <BrandLogo brandSlug={brandConfig.slug} variant="light" />
               </div>
             )}
             
@@ -75,14 +96,9 @@ export default async function BrandPage({ params }: Props) {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <SectionReveal>
               {/* Logo in about section for specific brands */}
-              {isCasaMia && (
+              {hasLogo && (
                 <div className="mb-6">
-                  <CasaMiaLogo variant="dark" className="h-10 w-auto" />
-                </div>
-              )}
-              {isAkropolli && (
-                <div className="mb-6">
-                  <AkropolliLogo variant="dark" className="h-10 w-auto" />
+                  <BrandLogo brandSlug={brandConfig.slug} variant="dark" />
                 </div>
               )}
               <Label className="mb-4 block" style={{ color: brandConfig.theme.primary }}>About {brandConfig.name}</Label>

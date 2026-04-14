@@ -6,8 +6,35 @@ import { motion } from 'framer-motion'
 import { BRAND_LIST } from '@/lib/brands/config'
 import { Label } from '@/components/ui/Typography'
 import { SectionReveal } from '@/components/ui/SectionReveal'
-import { CasaMiaLogo, CasaMiaLogoCompact } from '@/components/brands/CasaMiaLogo'
-import { AkropolliLogo, AkropolliLogoCompact } from '@/components/brands/AkropolliLogo'
+import { 
+  CasaMiaLogoCompact, 
+  AkropolliLogoCompact, 
+  OneClickLogoCompact,
+  TerrazoLogoCompact,
+  HausOfLightLogoCompact,
+  FormafinaLogoCompact
+} from '@/components/brands'
+
+function BrandLogoCompact({ brandSlug, variant = 'dark' }: { brandSlug: string; variant?: 'light' | 'dark' }) {
+  switch (brandSlug) {
+    case 'casa-mia':
+      return <CasaMiaLogoCompact variant={variant} className="h-6 w-auto" />
+    case 'akropolli':
+      return <AkropolliLogoCompact variant={variant} className="h-6 w-auto" />
+    case 'one-click':
+      return <OneClickLogoCompact variant={variant} className="h-6 w-auto" />
+    case 'terrazo':
+      return <TerrazoLogoCompact variant={variant} className="h-6 w-auto" />
+    case 'haus-of-light':
+      return <HausOfLightLogoCompact variant={variant} className="h-6 w-auto" />
+    case 'formafina':
+      return <FormafinaLogoCompact variant={variant} className="h-6 w-auto" />
+    default:
+      return null
+  }
+}
+
+const brandsWithLogos = ['casa-mia', 'akropolli', 'one-click', 'terrazo', 'haus-of-light', 'formafina']
 
 export function BrandGridSection() {
   return (
@@ -50,15 +77,14 @@ export function BrandGridSection() {
                 />
                 <div className="w-full">
                   {/* Show brand logo for specific brands */}
-                  {brand.slug === 'casa-mia' ? (
+                  {brandsWithLogos.includes(brand.slug) ? (
                     <div className="mb-2">
-                      <CasaMiaLogoCompact variant="dark" className="h-6 w-auto group-hover:hidden" />
-                      <CasaMiaLogoCompact variant="light" className="h-6 w-auto hidden group-hover:block" />
-                    </div>
-                  ) : brand.slug === 'akropolli' ? (
-                    <div className="mb-2">
-                      <AkropolliLogoCompact variant="dark" className="h-6 w-auto group-hover:hidden" />
-                      <AkropolliLogoCompact variant="light" className="h-6 w-auto hidden group-hover:block" />
+                      <div className="group-hover:hidden">
+                        <BrandLogoCompact brandSlug={brand.slug} variant="dark" />
+                      </div>
+                      <div className="hidden group-hover:block">
+                        <BrandLogoCompact brandSlug={brand.slug} variant="light" />
+                      </div>
                     </div>
                   ) : (
                     <p className="font-serif text-heading-md text-stone-900 group-hover:text-white transition-colors duration-500 leading-tight">{brand.name}</p>
