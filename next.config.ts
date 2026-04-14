@@ -15,8 +15,7 @@ const nextConfig: NextConfig = {
   },
 
   experimental: {
-    ppr: false,
-    reactCompiler: false,
+    // ppr: false,
   },
 
   async headers() {

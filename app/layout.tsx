@@ -1,6 +1,6 @@
 // app/layout.tsx
 import type { Metadata, Viewport } from 'next'
-import { Cormorant_Garamond, Geist, Geist_Mono } from 'next/font/google'
+import { Cormorant_Garamond, Inter } from 'next/font/google'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import '@/app/globals.css'
@@ -13,15 +13,9 @@ const cormorant = Cormorant_Garamond({
   display: 'swap',
 })
 
-const geistSans = Geist({
+const inter = Inter({
   subsets: ['latin'],
-  variable: '--font-geist-sans',
-  display: 'swap',
-})
-
-const geistMono = Geist_Mono({
-  subsets: ['latin'],
-  variable: '--font-geist-mono',
+  variable: '--font-inter',
   display: 'swap',
 })
 
@@ -51,7 +45,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${geistSans.variable} ${geistMono.variable}`}>
+    <html lang="en" className={`${cormorant.variable} ${inter.variable}`}>
       <body className="bg-white text-stone-900 antialiased">
         <Header />
         {children}

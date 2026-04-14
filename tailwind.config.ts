@@ -6,8 +6,8 @@ const config: Config = {
     extend: {
       fontFamily: {
         serif: ['var(--font-cormorant)', 'Georgia', 'serif'],
-        sans: ['var(--font-geist-sans)', 'system-ui', 'sans-serif'],
-        mono: ['var(--font-geist-mono)', 'monospace'],
+        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        mono: ['monospace'],
       },
       fontSize: {
         'display-2xl': ['clamp(64px, 8vw, 120px)', { lineHeight: '0.95', letterSpacing: '-0.03em' }],
