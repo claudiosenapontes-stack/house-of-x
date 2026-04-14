@@ -9,11 +9,12 @@ export const metadata: Metadata = {
 }
 
 interface Props {
-  searchParams: { q?: string }
+  searchParams: Promise<{ q?: string }>
 }
 
-export default function SearchPage({ searchParams }: Props) {
-  const query = searchParams.q?.trim() ?? ''
+export default async function SearchPage({ searchParams }: Props) {
+  const { q } = await searchParams
+  const query = q?.trim() ?? ''
 
   return (
     <main className="pt-16 lg:pt-20">

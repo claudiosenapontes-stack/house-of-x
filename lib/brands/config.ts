@@ -21,6 +21,7 @@ export interface BrandTheme {
   isDarkBrand: boolean
   heroBg?: string
   heroText?: string
+  light?: string
 }
 
 export interface BrandFonts {
@@ -70,6 +71,7 @@ export const BRANDS: Record<BrandId, BrandConfig> = {
       secondary: '#D4C5BC',
       surface: '#F5F0EB',
       surfaceDark: '#1A1410',
+      light: '#E8E0D8',
       onSurface: '#3D2A24',
       onSurfaceMuted: '#7A6258',
       cta: '#BFA9A1',
@@ -111,6 +113,7 @@ export const BRANDS: Record<BrandId, BrandConfig> = {
       secondary: '#9F9180',
       surface: '#0D2535',
       surfaceDark: '#071520',
+      light: '#1a3a4d',
       onSurface: '#FFFFFF',
       onSurfaceMuted: '#9F9180',
       cta: '#9F9180',
@@ -152,6 +155,7 @@ export const BRANDS: Record<BrandId, BrandConfig> = {
       secondary: '#7D4035',
       surface: '#F4EDEA',
       surfaceDark: '#1A0E0A',
+      light: '#e8ddd6',
       onSurface: '#2A1510',
       onSurfaceMuted: '#6B4035',
       cta: '#63342A',
@@ -193,6 +197,7 @@ export const BRANDS: Record<BrandId, BrandConfig> = {
       secondary: '#0088B8',
       surface: '#F8FAFB',
       surfaceDark: '#050F18',
+      light: '#e0f0f8',
       onSurface: '#000000',
       onSurfaceMuted: '#4A5568',
       cta: '#00A0D7',
@@ -234,6 +239,7 @@ export const BRANDS: Record<BrandId, BrandConfig> = {
       secondary: '#3D7EB0',
       surface: '#F2F5F8',
       surfaceDark: '#080F18',
+      light: '#d8e0e8',
       onSurface: '#1C2A38',
       onSurfaceMuted: '#607080',
       cta: '#3D7EB0',
@@ -275,6 +281,7 @@ export const BRANDS: Record<BrandId, BrandConfig> = {
       secondary: '#000000',
       surface: '#FFFFFF',
       surfaceDark: '#101010',
+      light: '#e8e8e8',
       onSurface: '#000000',
       onSurfaceMuted: '#888888',
       cta: '#000000',
@@ -316,6 +323,7 @@ export const BRANDS: Record<BrandId, BrandConfig> = {
       secondary: '#7A6E62',
       surface: '#DBCDBB',
       surfaceDark: '#1A1714',
+      light: '#e8e0d0',
       onSurface: '#2A2420',
       onSurfaceMuted: '#7A6E62',
       cta: '#9F9180',

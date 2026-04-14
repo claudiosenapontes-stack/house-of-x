@@ -4,7 +4,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { SectionReveal } from '@/components/ui/SectionReveal'
-import { H1, H2, H3, Body, BodySm, Label, Caption } from '@/components/ui/Typography'
+import { H1, H2, H3, H4, Body, BodySm, Label, Caption } from '@/components/ui/Typography'
 import { Button } from '@/components/ui/Button'
 import { cn } from '@/lib/utils'
 
