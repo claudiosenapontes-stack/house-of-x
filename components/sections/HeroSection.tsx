@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
+import { CasaMiaLogo } from '@/components/brands/CasaMiaLogo'
 
 const HERO_SLIDES = [
   {
@@ -15,6 +16,7 @@ const HERO_SLIDES = [
     cta: { label: 'Explore Casa Mia', href: '/brands/casa-mia' },
     bg: '#1a1410',
     accent: '#8b7355',
+    showLogo: true,
   },
   {
     id: 'haus-of-light',
@@ -24,6 +26,7 @@ const HERO_SLIDES = [
     cta: { label: 'Explore Haus of Light', href: '/brands/haus-of-light' },
     bg: '#080810',
     accent: '#d4a853',
+    showLogo: false,
   },
   {
     id: 'stark-windows',
@@ -33,6 +36,7 @@ const HERO_SLIDES = [
     cta: { label: 'Explore Stark Windows', href: '/brands/stark-windows' },
     bg: '#080f18',
     accent: '#4080b0',
+    showLogo: false,
   },
   {
     id: 'terrazo',
@@ -42,6 +46,7 @@ const HERO_SLIDES = [
     cta: { label: 'Explore Terrazo', href: '/brands/terrazo' },
     bg: '#1a1714',
     accent: '#9F9180',
+    showLogo: false,
   },
 ]
 
@@ -93,7 +98,12 @@ export function HeroSection() {
         transition={{ duration: 0.5 }}
         className="absolute top-24 lg:top-32 left-8 lg:left-16"
       >
-        <span className="font-sans text-label text-white/40 uppercase tracking-[0.2em]">{slide.brand}</span>
+        {/* Show Casa Mia logo instead of text label */}
+        {slide.showLogo ? (
+          <CasaMiaLogo variant="light" className="h-8 w-auto opacity-80" />
+        ) : (
+          <span className="font-sans text-label text-white/40 uppercase tracking-[0.2em]">{slide.brand}</span>
+        )}
       </motion.div>
 
       <div className="absolute inset-0 flex items-end pb-20 lg:pb-28 px-8 lg:px-16">

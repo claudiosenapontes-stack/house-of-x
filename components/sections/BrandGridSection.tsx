@@ -6,6 +6,7 @@ import { motion } from 'framer-motion'
 import { BRAND_LIST } from '@/lib/brands/config'
 import { Label } from '@/components/ui/Typography'
 import { SectionReveal } from '@/components/ui/SectionReveal'
+import { CasaMiaLogo, CasaMiaLogoCompact } from '@/components/brands/CasaMiaLogo'
 
 export function BrandGridSection() {
   return (
@@ -46,8 +47,16 @@ export function BrandGridSection() {
                   className="absolute top-4 right-4 w-2 h-2 rounded-full transition-transform duration-300 group-hover:scale-150"
                   style={{ backgroundColor: brand.theme.primary }}
                 />
-                <div>
-                  <p className="font-serif text-heading-md text-stone-900 group-hover:text-white transition-colors duration-500 leading-tight">{brand.name}</p>
+                <div className="w-full">
+                  {/* Show Casa Mia logo for that brand */}
+                  {brand.slug === 'casa-mia' ? (
+                    <div className="mb-2">
+                      <CasaMiaLogoCompact variant="dark" className="h-6 w-auto group-hover:hidden" />
+                      <CasaMiaLogoCompact variant="light" className="h-6 w-auto hidden group-hover:block" />
+                    </div>
+                  ) : (
+                    <p className="font-serif text-heading-md text-stone-900 group-hover:text-white transition-colors duration-500 leading-tight">{brand.name}</p>
+                  )}
                   <p className="font-sans text-caption text-stone-400 group-hover:text-stone-400 transition-colors duration-500 mt-1 leading-snug">{brand.subheading}</p>
                   <span
                     className="inline-block font-sans text-label mt-3 uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-1 group-hover:translate-y-0"
