@@ -7,6 +7,7 @@ import { BRAND_LIST } from '@/lib/brands/config'
 import { Label } from '@/components/ui/Typography'
 import { SectionReveal } from '@/components/ui/SectionReveal'
 import { CasaMiaLogo, CasaMiaLogoCompact } from '@/components/brands/CasaMiaLogo'
+import { AkropolliLogo, AkropolliLogoCompact } from '@/components/brands/AkropolliLogo'
 
 export function BrandGridSection() {
   return (
@@ -48,11 +49,16 @@ export function BrandGridSection() {
                   style={{ backgroundColor: brand.theme.primary }}
                 />
                 <div className="w-full">
-                  {/* Show Casa Mia logo for that brand */}
+                  {/* Show brand logo for specific brands */}
                   {brand.slug === 'casa-mia' ? (
                     <div className="mb-2">
                       <CasaMiaLogoCompact variant="dark" className="h-6 w-auto group-hover:hidden" />
                       <CasaMiaLogoCompact variant="light" className="h-6 w-auto hidden group-hover:block" />
+                    </div>
+                  ) : brand.slug === 'akropolli' ? (
+                    <div className="mb-2">
+                      <AkropolliLogoCompact variant="dark" className="h-6 w-auto group-hover:hidden" />
+                      <AkropolliLogoCompact variant="light" className="h-6 w-auto hidden group-hover:block" />
                     </div>
                   ) : (
                     <p className="font-serif text-heading-md text-stone-900 group-hover:text-white transition-colors duration-500 leading-tight">{brand.name}</p>

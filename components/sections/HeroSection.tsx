@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import { CasaMiaLogo } from '@/components/brands/CasaMiaLogo'
+import { AkropolliLogo } from '@/components/brands/AkropolliLogo'
 
 const HERO_SLIDES = [
   {
@@ -16,6 +17,16 @@ const HERO_SLIDES = [
     cta: { label: 'Explore Casa Mia', href: '/brands/casa-mia' },
     bg: '#1a1410',
     accent: '#8b7355',
+    showLogo: true,
+  },
+  {
+    id: 'akropolli',
+    brand: 'Akropolli',
+    headline: 'Wall finishes,\nredefined.',
+    subline: 'Clay, plaster & fluted panels',
+    cta: { label: 'Explore Akropolli', href: '/brands/akropolli' },
+    bg: '#1A0E0A',
+    accent: '#63342A',
     showLogo: true,
   },
   {
@@ -98,9 +109,11 @@ export function HeroSection() {
         transition={{ duration: 0.5 }}
         className="absolute top-24 lg:top-32 left-8 lg:left-16"
       >
-        {/* Show Casa Mia logo instead of text label */}
-        {slide.showLogo ? (
+        {/* Show brand logo instead of text label */}
+        {slide.id === 'casa-mia' && slide.showLogo ? (
           <CasaMiaLogo variant="light" className="h-8 w-auto opacity-80" />
+        ) : slide.id === 'akropolli' && slide.showLogo ? (
+          <AkropolliLogo variant="light" className="h-8 w-auto opacity-80" />
         ) : (
           <span className="font-sans text-label text-white/40 uppercase tracking-[0.2em]">{slide.brand}</span>
         )}
