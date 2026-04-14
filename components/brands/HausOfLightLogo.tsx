@@ -9,34 +9,10 @@ export function HausOfLightLogo({ className = '', variant = 'dark' }: Props) {
   const accentColor = '#9F9180'
 
   return (
-    <svg 
-      viewBox="0 0 240 40" 
-      fill="none" 
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-    >
-      {/* Haus of Light wordmark - Barlow, semi-condensed */}
-      <text
-        x="0"
-        y="30"
-        fontFamily="Barlow, sans-serif"
-        fontSize="26"
-        fontWeight="500"
-        letterSpacing="0.1em"
-        fill={textColor}
-      >
-        Haus of Light
-      </text>
-      {/* Warm grey accent line */}
-      <line
-        x1="0"
-        y1="36"
-        x2="30"
-        y2="36"
-        stroke={accentColor}
-        strokeWidth="2"
-      />
-    </svg>
+    <div className={className} style={{ fontFamily: 'system-ui, sans-serif', letterSpacing: '0.1em', fontSize: '26px', fontWeight: 500, color: textColor, lineHeight: 1 }}>
+      <div>Haus of Light</div>
+      <div style={{ width: '30px', height: '2px', backgroundColor: accentColor, marginTop: '4px' }} />
+    </div>
   )
 }
 
@@ -44,23 +20,8 @@ export function HausOfLightLogoCompact({ className = '', variant = 'dark' }: Pro
   const textColor = variant === 'light' ? '#FFFFFF' : '#0D2535'
   
   return (
-    <svg 
-      viewBox="0 0 160 32" 
-      fill="none" 
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-    >
-      <text
-        x="0"
-        y="24"
-        fontFamily="Barlow, sans-serif"
-        fontSize="18"
-        fontWeight="500"
-        letterSpacing="0.08em"
-        fill={textColor}
-      >
-        HausLight
-      </text>
-    </svg>
+    <div className={className} style={{ fontFamily: 'system-ui, sans-serif', letterSpacing: '0.08em', fontSize: '18px', fontWeight: 500, color: textColor, lineHeight: 1 }}>
+      HausLight
+    </div>
   )
 }

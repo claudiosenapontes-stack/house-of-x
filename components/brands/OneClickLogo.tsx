@@ -9,63 +9,25 @@ export function OneClickLogo({ className = '', variant = 'dark' }: Props) {
   const accentColor = '#00A0D7'
 
   return (
-    <svg 
-      viewBox="0 0 200 40" 
-      fill="none" 
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-    >
-      {/* One Click wordmark - Montserrat, modern tech feel */}
-      <text
-        x="0"
-        y="30"
-        fontFamily="Montserrat, system-ui, sans-serif"
-        fontSize="24"
-        fontWeight="600"
-        letterSpacing="0.08em"
-        fill={textColor}
-      >
+    <div className={className} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+      <div style={{ fontFamily: 'system-ui, sans-serif', letterSpacing: '0.08em', fontSize: '24px', fontWeight: 600, color: textColor, lineHeight: 1 }}>
         One Click
-      </text>
-      {/* Cyan accent dot */}
-      <circle
-        cx="188"
-        cy="20"
-        r="4"
-        fill={accentColor}
-      />
-    </svg>
+      </div>
+      <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: accentColor }} />
+    </div>
   )
 }
 
 export function OneClickLogoCompact({ className = '', variant = 'dark' }: Props) {
   const textColor = variant === 'light' ? '#FFFFFF' : '#000000'
   const accentColor = '#00A0D7'
-  
+
   return (
-    <svg 
-      viewBox="0 0 140 32" 
-      fill="none" 
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-    >
-      <text
-        x="0"
-        y="24"
-        fontFamily="Montserrat, system-ui, sans-serif"
-        fontSize="18"
-        fontWeight="600"
-        letterSpacing="0.06em"
-        fill={textColor}
-      >
+    <div className={className} style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+      <div style={{ fontFamily: 'system-ui, sans-serif', letterSpacing: '0.06em', fontSize: '18px', fontWeight: 600, color: textColor, lineHeight: 1 }}>
         OneClick
-      </text>
-      <circle
-        cx="130"
-        cy="16"
-        r="3"
-        fill={accentColor}
-      />
-    </svg>
+      </div>
+      <div style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: accentColor }} />
+    </div>
   )
 }
